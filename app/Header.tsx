@@ -1,9 +1,16 @@
+import Link from "next/link";
 import React from "react";
+import "../styles/globals.css";
 
 function Header() {
   return (
-    <header className="p-5 bg-blue-400">
-      <p>I&apos;m a header</p>
+    <header className="p-5">
+      <Link className="p-2" href={"/"}>
+        Blog
+      </Link>
+      <Link className="p-2" href={"/about"}>
+        About
+      </Link>
     </header>
   );
 }
