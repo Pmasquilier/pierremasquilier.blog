@@ -4,12 +4,12 @@ import "../styles/globals.css";
 
 function Header() {
   return (
-    <header className="p-5">
-      <Link className="p-2" href={"/"}>
+    <header className="p-5 flex justify-between">
+      <Link className="text-lg font-bold text-gray-700" href={"/"}>
         Blog
       </Link>
-      <Link className="p-2" href={"/about"}>
-        About
+      <Link className="text-gray-500" href={"/about"}>
+        Qui-suis-je
       </Link>
     </header>
   );
