@@ -2,27 +2,26 @@ import { nanoid } from "nanoid";
 import Link from "next/link";
 import React, { Fragment } from "react";
 
-type Article = {
+export type Article = {
+  id: string;
   name: string;
+  categorie: string;
+  title: string;
+  subtitle: string;
+  date: string;
 };
 
-function ArticleList() {
-  const articleList: Article[] = [
-    {
-      name: "article1",
-    },
-    {
-      name: "article2",
-    },
-    {
-      name: "article3",
-    },
-  ];
+const fetchArticleList = async () => {
+  return await prisma.article.findMany();
+};
+
+async function ArticleList() {
+  const articleList = (await fetchArticleList()) as Article[];
 
   return (
     <>
       {articleList.map((article: Article) => (
-        <Link href={`/article/${article.name}`} key={nanoid()}>
+        <Link href={`/article/${article.id}`} key={nanoid()}>
           {article.name}
         </Link>
       ))}
