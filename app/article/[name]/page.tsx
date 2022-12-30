@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { Article } from "../../../common/models/article.model";
-import { fetchArticleById } from "../../../lib/article";
+import { fetchArticleByName } from "../../../lib/article";
 
 type PageProps = {
   params: {
@@ -10,7 +10,7 @@ type PageProps = {
 };
 
 async function ArticlePost({ params: { name } }: PageProps) {
-  const article = (await fetchArticleById(name)) as Article;
+  const article = (await fetchArticleByName(name)) as Article;
   return (
     <>
       <div>

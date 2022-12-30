@@ -4,10 +4,10 @@ export const fetchArticleList = async () => {
   return prisma.article.findMany();
 };
 
-export const fetchArticleById = async (articleId: string) => {
+export const fetchArticleByName = async (articleName: string) => {
   return await prisma.article.findUnique({
     where: {
-      id: articleId,
+      name: articleName,
     },
   });
 };

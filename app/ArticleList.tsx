@@ -13,7 +13,7 @@ async function ArticleList() {
       {articleList.map((article: Article) => (
         <div key={nanoid()}>
           <div>
-            <Link href={`/article/${article.id}`}>
+            <Link href={`/article/${article.name}`}>
               <Image
                 src="/vercel.svg"
                 width="50"
