@@ -1,29 +1,36 @@
 import { nanoid } from "nanoid";
+import Image from "next/image";
 import Link from "next/link";
-import React, { Fragment } from "react";
+import React from "react";
+import { Article } from "../common/models/article.model";
+import prisma from "../lib/prisma";
 
-export type Article = {
-  id: string;
-  name: string;
-  categorie: string;
-  title: string;
-  subtitle: string;
-  date: string;
-};
-
-const fetchArticleList = async () => {
-  return await prisma.article.findMany();
+const fetchArticleListPrisma = async () => {
+  return prisma.article.findMany();
 };
 
 async function ArticleList() {
-  const articleList = (await fetchArticleList()) as Article[];
+  const articleList: Article[] = await fetchArticleListPrisma();
 
   return (
     <>
       {articleList.map((article: Article) => (
-        <Link href={`/article/${article.id}`} key={nanoid()}>
-          {article.name}
-        </Link>
+        <div key={nanoid()}>
+          <div>
+            <Link href={`/article/${article.id}`}>
+              <Image
+                src="/vercel.svg"
+                width="50"
+                height="50"
+                alt="test"
+              ></Image>
+              <h2>{article?.categorie}</h2>
+              <h2>{article?.title}</h2>
+              <h2>{article?.subtitle}</h2>
+              <h2>{article?.date}</h2>
+            </Link>
+          </div>
+        </div>
       ))}
     </>
   );

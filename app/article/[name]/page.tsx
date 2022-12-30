@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { Article } from "../../ArticleList";
+import { Article } from "../../../common/models/article.model";
 import prisma from "../../../lib/prisma";
 
 type PageProps = {
