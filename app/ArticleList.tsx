@@ -3,14 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Article } from "../common/models/article.model";
-import prisma from "../lib/prisma";
-
-const fetchArticleListPrisma = async () => {
-  return prisma.article.findMany();
-};
+import { fetchArticleList } from "../lib/article";
 
 async function ArticleList() {
-  const articleList: Article[] = await fetchArticleListPrisma();
+  const articleList: Article[] = await fetchArticleList();
 
   return (
     <>

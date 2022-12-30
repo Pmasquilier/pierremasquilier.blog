@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { Article } from "../../../common/models/article.model";
-import prisma from "../../../lib/prisma";
+import { fetchArticleById } from "../../../lib/article";
 
 type PageProps = {
   params: {
@@ -9,16 +9,8 @@ type PageProps = {
   };
 };
 
-const fetchArticle = async (articleId: string) => {
-  return await prisma.article.findUnique({
-    where: {
-      id: articleId,
-    },
-  });
-};
-
 async function ArticlePost({ params: { name } }: PageProps) {
-  const article = (await fetchArticle(name)) as Article;
+  const article = (await fetchArticleById(name)) as Article;
   return (
     <>
       <div>
