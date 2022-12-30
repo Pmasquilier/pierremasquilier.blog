@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { Article } from "../../../common/models/article.model";
-import { fetchArticleByName } from "../../../lib/article";
+import { fetchArticleByName, fetchArticleList } from "../../../lib/article";
 
 type PageProps = {
   params: {
@@ -25,3 +25,11 @@ async function ArticlePost({ params: { name } }: PageProps) {
 }
 
 export default ArticlePost;
+
+export async function generateStaticParams() {
+  const articleList = (await fetchArticleList()) as Article[];
+
+  return articleList.map((article: Article) => ({
+    name: article.name.toString(),
+  }));
+}
