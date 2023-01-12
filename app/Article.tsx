@@ -10,11 +10,28 @@ function Article({ article }: Props) {
   return (
     <div>
       <Link href={`/article/${article.name}`}>
-        <Image src="/vercel.svg" width="50" height="50" alt="test"></Image>
-        <h2>{article?.categorie}</h2>
-        <h2>{article?.title}</h2>
-        <h2>{article?.subtitle}</h2>
-        <h2>{article?.date}</h2>
+        <div className="m-auto p-6 w-80 h-max rounded shadow-lg">
+          <Image
+            src="/design3.png"
+            width="400"
+            height="200"
+            alt="Article Image Preview"
+          ></Image>
+          <div className="mt-3">
+            <h2 className="text-purple-700 font-semibold text-xs">
+              {article?.categorie}
+            </h2>
+            <h2 className="mt-2 text-gray-900 font-semibold text-base">
+              {article?.title}
+            </h2>
+            <h2 className="text-gray-500 font-normal text-base">
+              {article?.subtitle}
+            </h2>
+            <h2 className="mt-4 text-gray-500 font-normal text-xs">
+              {article?.date}
+            </h2>
+          </div>
+        </div>
       </Link>
     </div>
   );
